@@ -9,7 +9,7 @@ export class Ball implements GameObject
     private gameEngine:GameEngine;
     public position:Vector;
     private direction:Vector;
-    private speed:number = 60;
+    private speed:number = 160;
     private size:number= 10;
 
     constructor (position:Vector, gameEngine:GameEngine)
@@ -47,8 +47,18 @@ export class Ball implements GameObject
         // reverse direction if player collides with ball
         if (other == this.gameEngine.player1)
         {
-            this.direction.x *= -1;
+            this.direction.y *= -1;
         }
+        if(other == this.gameEngine.brick1){
+            this.gameEngine.brick1 = null;
+        }
+        if(other == this.gameEngine.brick2){
+            this.gameEngine.brick2 = null;
+        }
+        if(other == this.gameEngine.brick3){
+            this.gameEngine.brick3 = null;
+        }
+        
     }
 
 }
